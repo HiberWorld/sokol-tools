@@ -296,6 +296,8 @@ static spirvcross_source_t to_glsl(const spirv_blob_t& blob, int glsl_version, b
     options.emit_uniform_buffer_as_plain_uniforms = !is_vulkan;
     options.vertex.fixup_clipspace = (0 != (opt_mask & option_t::FIXUP_CLIPSPACE));
     options.vertex.flip_vert_y = (0 != (opt_mask & option_t::FLIP_VERT_Y));
+    options.fragment.default_float_precision = CompilerGLSL::Options::Precision::Mediump;
+    options.fragment.default_int_precision = CompilerGLSL::Options::Precision::Mediump;
     compiler.set_common_options(options);
     fix_bind_slots(compiler, type, is_vulkan);
     fix_ub_matrix_force_colmajor(compiler);
